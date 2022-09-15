@@ -88,6 +88,7 @@ public class Maze : MonoBehaviour
                     GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     wall.transform.localScale = new Vector3(scale, scale, scale);
                     wall.transform.position = pos;
+                    wall.GetComponent<Renderer>().material = wallColour;
                 }
             }
     }
