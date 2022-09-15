@@ -23,15 +23,20 @@ public class MapLocation
 
     public override bool Equals(object obj)
     {
-        if (obj == null || !GetType().Equals(obj.GetType()))
+        if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+        {
             return false;
+        }
+        else 
+        {
+            return x == ((MapLocation)obj).x && z == ((MapLocation)obj).z;
+        }
 
-        return x == ((MapLocation)obj).x && z == ((MapLocation)obj).z;
     }
 
     public override int GetHashCode()
     {
-        return base.GetHashCode();
+        return 0;
     }
 
 }
@@ -49,6 +54,7 @@ public class Maze : MonoBehaviour
     public int scale = 6;
     public Material wallColour;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +63,7 @@ public class Maze : MonoBehaviour
         DrawMap();
     }
 
-    void InitialiseMap()
+    public void InitialiseMap()
     {
         map = new byte[width,depth];
         for (int z = 0; z < depth; z++)
@@ -77,7 +83,7 @@ public class Maze : MonoBehaviour
             }
     }
 
-    void DrawMap()
+    public void DrawMap()
     {
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
@@ -88,7 +94,8 @@ public class Maze : MonoBehaviour
                     GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     wall.transform.localScale = new Vector3(scale, scale, scale);
                     wall.transform.position = pos;
-                    wall.GetComponent<Renderer>().material = wallColour;
+                    if(wallColour)
+                        wall.GetComponent<Renderer>().sharedMaterial = wallColour;
                 }
             }
     }
