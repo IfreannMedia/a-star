@@ -164,12 +164,12 @@ public class FindPathAStar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //BeginSearch();
-        //while (!done)
-        //    Search(lastPos);
-        //maze.InitialiseMap();
-        //MarkPath();
-        //maze.DrawMap();
+        BeginSearch();
+        while (!done)
+            Search(lastPos);
+        maze.InitialiseMap();
+        MarkPath();
+        maze.DrawMap();
     }
 
     void MarkPath()

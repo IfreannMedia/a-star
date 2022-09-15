@@ -60,7 +60,7 @@ public class Maze : MonoBehaviour
     {
         InitialiseMap();
         Generate();
-        DrawMap();
+        //DrawMap();
     }
 
     public void InitialiseMap()
